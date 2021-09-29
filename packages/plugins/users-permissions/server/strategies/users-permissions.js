@@ -1,6 +1,6 @@
 'use strict';
 
-const { castArray, map } = require('lodash/fp');
+const { castArray, map, toLower } = require('lodash/fp');
 
 const { getService } = require('../utils');
 
@@ -75,7 +75,7 @@ const verify = async (auth, config) => {
       },
     });
 
-    const allowedActions = map('action', publicPermissions);
+    const allowedActions = map('action', publicPermissions).map(toLower);
 
     // A non authenticated user cannot access routes that do not have a scope
     if (!config.scope) {
