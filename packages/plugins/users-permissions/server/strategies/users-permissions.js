@@ -82,7 +82,9 @@ const verify = async (auth, config) => {
       throw new errors.UnauthorizedError();
     }
 
-    const isAllowed = castArray(config.scope).every(scope => allowedActions.includes(scope));
+    const isAllowed = castArray(config.scope)
+      .map(toLower)
+      .every(scope => allowedActions.includes(scope));
 
     if (!isAllowed) {
       throw new errors.ForbiddenError();
