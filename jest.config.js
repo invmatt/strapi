@@ -1,8 +1,6 @@
 'use strict';
 
 module.exports = {
-  name: 'Unit test',
-  testMatch: ['<rootDir>/packages/**/__tests__/?(*.)+(spec|test).js'],
-  modulePathIgnorePatterns: ['.cache'],
-  transform: {},
+  coverageDirectory: '<rootDir>/coverage',
+  projects: ['<rootDir>/packages/**/jest.config.js', '<rootDir>/.github'],
 };
